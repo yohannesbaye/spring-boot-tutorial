@@ -1,0 +1,105 @@
+
+
+
+server:
+  port: 8082
+
+  spring:
+    application:
+      name: Department-Service
+
+spring:
+  profiles:
+    active: qa
+
+---
+
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: admin
+    url: jdbc:mysql://localhost:3306/myDBms-db
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to Daily Code Buffer!!
+
+  #this is my own implmentation
+
+  spring:
+    application:
+      name: Department-Service
+
+#
+---
+
+spring:
+  profiles: qa
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    url: jdbc:mysql://localhost:3306/myDBms-qa
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to Daily Code Buffer
+
+  spring:
+    application:
+      name: Department-Service
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
+
+---
+
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: admin
+    url: jdbc:mysql://localhost:3306/myDBms
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+welcome:
+  message: Welcome to Daily Code Buffer!!
+
+  spring:
+    application:
+      name: Department-Service
+
+#    application.properties  database configuration
+#server.port = 8082
+#
+#Welcome.page =Welcome To Spring Boot Tutorial;
+#Welcome.page =Welcome To Spring Boot Tutorial;
+#spring.jpa.hibernate.ddl-auto=update
+#spring.datasource.url=jdbc:mysql://localhost:3306/myDBms
+#spring.datasource.username=root
+#spring.datasource.password=root
+#spring.jpa.show-sql=true
+#
+#This one is for h2 database
+#spring.h2.console.enabled=true
+#spring.jpa.show-sql=true
+#spring.jpa.hibernate.ddl-auto=create-drop
+#spring.datasource.url=jdbc:h2:mem:waa
+#spring.datasource.driverClassName=org.h2.Driver
+#spring.datasource.username=sa
+#spring.datasource.password=
